@@ -1,11 +1,11 @@
 import React from 'react';
 
-const WorkoutDetails = () => {
+const page = () => {
     return (
         <div>
-            
+         <h1>WORKOUT</h1>
         </div>
     );
 };
 
-export default WorkoutDetails;
+export default page;

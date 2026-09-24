@@ -22,7 +22,7 @@ const WorkoutLibrary = async() => {
             <div className="cursor-pointer grid grid-cols-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                     workouts.map((workout: any) => (
-                        <Link href={`/workouts/${workout.id}`} key={workout.id}>
+                        <Link href={`/workout/${workout.id}`} key={workout.id}>
                             <WorkoutCard workout={workout} />
                         </Link>
                     ))
