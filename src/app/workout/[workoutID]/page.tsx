@@ -1,4 +1,3 @@
-import React from 'react';
 import { IWorkout } from '@/types/workout.type';
 import Image from 'next/image';
 import PlanButton from '@/components/workoutDetails/PlanButton';
@@ -142,8 +141,8 @@ const WorkoutDetails = async ({ params }: WorkoutDetailsProps) => {
 
                     {/* Buttons */}
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                        <PlanButton />
-                        <SaveButton />
+                        <PlanButton workout={workout} />
+                        <SaveButton workout={workout}/>
                     </div>
                 </div>
             </div>
