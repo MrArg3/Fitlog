@@ -22,8 +22,12 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex items-center gap-4 text-sm font-medium">
-                        <button>Plan <span className="bg-[#b2da00] text-black px-3 py-1 rounded-full">0</span> </button>
-                        <button>Saved <span className="border border-[#ffffff] text-white px-3 py-1 rounded-full">0</span></button>
+                        <Link href={"/my-plan"}>
+                            <button>Plan <span className="bg-[#b2da00] text-black px-3 py-1 rounded-full">0</span> </button>
+                        </Link>
+                        <Link href={"/my-plan"}>
+                            <button>Saved <span className="border border-[#ffffff] text-white px-3 py-1 rounded-full">0</span></button>
+                        </Link>
                     </div>
 
                 </div>

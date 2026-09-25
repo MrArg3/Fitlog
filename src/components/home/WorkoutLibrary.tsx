@@ -11,7 +11,7 @@ const workoutApi = async () => {
 const WorkoutLibrary = async() => {
     const workouts = await workoutApi();
     return (
-        <section className="max-w-6xl mx-auto  p-[16px]">
+        <section className="max-w-6xl mx-auto  p-[16px] mb-8">
             <div>
 
             <h2 className="font-oswald text-3xl text-white ">THE LIBRARY</h2>

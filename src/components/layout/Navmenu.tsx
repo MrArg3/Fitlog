@@ -2,41 +2,41 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import logo from "@/app/assets/logo.png";
 import hamburger from "@/app/assets/icon/hamburger.svg";
 import "./Navmenu.css";
-import Link from "next/dist/client/link";
 
 const Navmenu = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="bg-[#0f1115]/80 backdrop-blur-md border-b border-gray-800/75 sticky top-0 z-50">
-            <div className="max-w-6xl mx-auto">
+        <nav className="relative sticky top-0 z-50 border-b border-gray-800/75 bg-[#0f1115]/80 backdrop-blur-md">
+            <div className="mx-auto max-w-6xl">
 
                 {/* Main Navbar */}
-                <div className="flex items-center justify-between py-4 px-8 text-white">
+                <div className="flex items-center justify-between px-4 py-4 text-white sm:px-6 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-8">
 
+                    {/* Logo + Hamburger */}
+                    <div className="flex items-center gap-4">
 
-                    {/* Logo */}
-                    <div className="navbar-start flex items-center gap-4">
-                        {/* Hamburger Button */}
-                        <div>
-                            <button
-                                onClick={() => setMenuOpen(!menuOpen)}
-                                className="lg:hidden flex items-center justify-center"
-                                aria-label="Toggle menu"
-                            >
-                                <Image
-                                    src={hamburger}
-                                    alt="Menu"
-                                    width={28}
-                                    height={28}
-                                />
-                            </button>
-                        </div>
+                        {/* Hamburger */}
+                        <button
+                            onClick={() => setMenuOpen(!menuOpen)}
+                            className="flex items-center justify-center lg:hidden"
+                            aria-label="Toggle menu"
+                            aria-expanded={menuOpen}
+                        >
+                            <Image
+                                src={hamburger}
+                                alt="Menu"
+                                width={28}
+                                height={28}
+                            />
+                        </button>
 
+                        {/* Logo */}
                         <div className="flex items-center gap-2">
                             <Image
                                 src={logo}
@@ -46,95 +46,105 @@ const Navmenu = () => {
                             />
 
                             <h2 className="font-oswald text-xl">
-                               <Link href="/" className="cursor-pointer hover:text-[#C2F800] transition">
+                                <Link
+                                    href="/"
+                                    className="cursor-pointer transition hover:text-[#C2F800]"
+                                >
                                     FITLOG
                                 </Link>
                             </h2>
                         </div>
-                    </div>
-
-                  {/* Desktop Navigation */}
-<div className="hidden lg:flex items-center gap-4 text-sm font-medium">
-    <ul className="flex gap-4">
-        <li>
-            <Link
-                href="/"
-                className="cursor-pointer text-[#C2F800] transition"
-            >
-                Workouts
-            </Link>
-        </li>
-
-        <li>
-            <Link
-                href="/my-plan"
-                className="cursor-pointer hover:text-[#C2F800] transition"
-            >
-                My Plan
-            </Link>
-        </li>
-    </ul>
-</div>
-
-                    {/* Desktop Actions */}
-                    <div className="flex items-center gap-6 text-[12px] ">
-
-                        <button className=" font-medium cursor-pointer">
-                            Plan{" "}
-                            <span className="bg-[#b2da00] text-black  px-[10px] py-[2px] rounded-full">
-                                0
-                            </span>
-                        </button>
-
-                        <button className="font-medium cursor-pointer">
-                            Saved{" "}
-                            <span className="border border-white text-white font-medium px-[10px] py-[1px] rounded-full">
-                                0
-                            </span>
-                        </button>
 
                     </div>
 
+                    {/* Desktop Navigation */}
+                    <div className="hidden items-center justify-center lg:flex">
+                        <ul className="flex items-center gap-8 text-sm font-medium">
 
-
-                </div>
-
-                {/* Mobile & Tablet Menu */}
-                {menuOpen && (
-                    <div className="lg:hidden border-t border-gray-800 px-8 py-5">
-
-                        <ul className="flex flex-col gap-5 text-white text-sm font-medium">
-
-                            <li className="cursor-pointer hover:text-[#C2F800] transition">
-                                Workouts
-                            </li>
-
-                            <li className="cursor-pointer hover:text-[#C2F800] transition">
-                                My Plan
-                            </li>
-
-                            {/* <li>
-                                <button className="cursor-pointer">
-                                    Plan{" "}
-                                    <span className="bg-[#b2da00] text-black px-3 py-1 rounded-full">
-                                        0
-                                    </span>
-                                </button>
+                            <li>
+                                <Link
+                                    href="/"
+                                    className="cursor-pointer text-[#C2F800] transition hover:text-[#C2F800]"
+                                >
+                                    Workouts
+                                </Link>
                             </li>
 
                             <li>
-                                <button className="cursor-pointer">
-                                    Saved{" "}
-                                    <span className="border border-white text-white px-3 py-1 rounded-full">
-                                        0
-                                    </span>
-                                </button>
-                            </li> */}
+                                <Link
+                                    href="/my-plan"
+                                    className="cursor-pointer transition hover:text-[#C2F800]"
+                                >
+                                    My Plan
+                                </Link>
+                            </li>
 
                         </ul>
+                    </div>
+
+                    {/* Plan + Saved */}
+                    <div className="flex items-center justify-end gap-4 text-[12px] sm:gap-6 lg:justify-self-end">
+
+                        {/* Plan */}
+                        <Link
+                            href="/my-plan"
+                            className="cursor-pointer font-medium"
+                        >
+                            Plan{" "}
+                            <span className="rounded-full bg-[#b2da00] px-[10px] py-[2px] text-black">
+                                0
+                            </span>
+                        </Link>
+
+                        {/* Saved */}
+                        <Link
+                            href="/my-plan"
+                            className="cursor-pointer font-medium"
+                        >
+                            Saved{" "}
+                            <span className="rounded-full border border-white px-[10px] py-[1px] text-white">
+                                0
+                            </span>
+                        </Link>
 
                     </div>
-                )}
+
+                </div>
+
+                {/* Mobile Dropdown Menu */}
+                <div
+                    className={`absolute left-0 top-full z-50  overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
+                        menuOpen
+                            ? "max-h-[300px] translate-y-0 opacity-100"
+                            : "max-h-0 -translate-y-2 opacity-0"
+                    }`}
+                >
+                    <ul className="mx-4 rounded-2xl text-[12px] font-light border border-gray-700/50 bg-[#1a1d23] p-2 w-[200px]  shadow-xl">
+
+                        {/* Workouts */}
+                        <li>
+                            <Link
+                                href="/"
+                                className="block rounded-xl py-1 pl-3 text-white transition duration-300 hover:bg-gray-800 hover:text-[#C2F800]"
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                Workouts
+                            </Link>
+                        </li>
+
+                        {/* My Plan */}
+                        <li>
+                            <Link
+                                href="/my-plan"
+                                className="block rounded-xl py-1 pl-3 text-white transition duration-300 hover:bg-gray-800 hover:text-[#C2F800]"
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                My Plan
+                            </Link>
+                        </li>
+
+                    </ul>
+                </div>
 
             </div>
         </nav>

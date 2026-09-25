@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Oswald, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
+import Navbar from "@/components/layout/trush/Navbar";
 import Footer from "@/components/layout/Footer";
 import Navmenu from "@/components/layout/Navmenu";
+import WorkoutProvider from "@/context/WorkoutContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,15 +34,19 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-  lang="en"
-  className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} ${inter.variable} h-full antialiased`}
->
-      <body className="min-h-full flex flex-col">
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} ${inter.variable} h-full antialiased`}
+    >
+      <body className="min-h-screen flex flex-col">
         {/* <Navbar/> */}
-        <Navmenu/>
-        {children}
-        <Footer/>
-        </body>
+        <WorkoutProvider>
+          <Navmenu />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </WorkoutProvider>
+      </body>
     </html>
   );
 }

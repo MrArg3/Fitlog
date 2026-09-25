@@ -1,3 +1,6 @@
+import React from "react";
+import Dropdown from "@/components/layout/dropdown";
+
 const Myplan = () => {
     return (
         <section className="w-full max-w-[1200px] p-[16px]">
@@ -6,6 +9,9 @@ const Myplan = () => {
                 <p>Cap of five lifts for today. Finish them, then load more.</p>
             </div>
            {/* <PlanHeader/> */}
+           <div>
+            {/* <Dropdown/> */}
+           </div>
         </section>
     );
 };
