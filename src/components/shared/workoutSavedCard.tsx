@@ -5,7 +5,6 @@ import Link from "next/link";
 
 type WorkoutListCardProps = {
     workout: IWorkout;
-    onMarkAsDone: () => void;
     onRemove: () => void;
 };
 
@@ -70,7 +69,7 @@ const icon = {
 };
 
 
-const WorkoutListCard = ({ workout, onMarkAsDone, onRemove }: WorkoutListCardProps) => {
+const WorkoutListCard = ({ workout, onRemove }: WorkoutListCardProps) => {
     return (
         <div className="flex flex-col gap-4 rounded-2xl border border-[#2b2e36] bg-[#1a1d23] p-3 sm:flex-row sm:items-center sm:p-4">
 
@@ -127,15 +126,6 @@ const WorkoutListCard = ({ workout, onMarkAsDone, onRemove }: WorkoutListCardPro
                     View Details
                 </Link>
 
-                {/* Mark as Done */}
-                <button
-                    type="button"
-                    onClick={onMarkAsDone}
-                    className="flex items-center gap-1.5 rounded-full bg-[#c2f800] px-3 py-1.5 text-[10px] font-semibold text-black transition hover:bg-[#d4ff33]"
-                >
-                    <span>✓</span>
-                    Mark as Done
-                </button>
 
                 {/* Remove */}
                 <button

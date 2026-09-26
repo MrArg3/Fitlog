@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/app/assets/logo.png";
 import hamburger from "@/app/assets/icon/hamburger.svg";
-import "./Navmenu.css";
 import { useContext } from "react";
 import { WorkoutContext } from "@/context/WorkoutContext";
 

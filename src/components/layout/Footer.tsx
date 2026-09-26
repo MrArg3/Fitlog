@@ -1,10 +1,8 @@
-import React from 'react';
 import logo from "@/app/assets/logo.png"
 import Image from 'next/image';
 
 const Footer = () => {
     return (
-
         <footer className="border-t border-gray-800/75 bg-[#1a1d23] px-[16px] py-[32px]">
             <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
 
@@ -21,7 +19,6 @@ const Footer = () => {
 
             </div>
         </footer>
-
     );
 };
 

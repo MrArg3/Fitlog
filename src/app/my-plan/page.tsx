@@ -3,13 +3,26 @@
 import { WorkoutContext } from "@/context/WorkoutContext";
 import { useContext, useState } from "react";
 import WorkoutListCard from "@/components/shared/workoutListCard";
+import WorkoutSavedCard from "@/components/shared/workoutSavedCard";
 import { IWorkout } from "@/types/workout.type";
 import WorkoutBlankCard from "@/components/shared/workoutBlankCard";
 
 const Myplan = () => {
-    const { myplan, saved } = useContext(WorkoutContext);
+    const { myplan, setMyplan, saved, setSaved } = useContext(WorkoutContext);
     const [activeTab, setActiveTab] = useState("plan");
+    const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">("duration");
     const currentData: IWorkout[] = activeTab === "plan" ? myplan : saved;
+    const sortedData = [...currentData].sort((first, second) => {
+        const getSortValue = (workout: IWorkout) => {
+            if (sortBy === "calories") {
+                return Number(workout.calories ?? workout.caloriesBurned ?? 0);
+            }
+
+            return Number(workout[sortBy] ?? 0);
+        };
+
+        return getSortValue(first) - getSortValue(second);
+    });
 
     return (
         <section className="max-w-6xl mx-auto px-4 py-8">
@@ -126,7 +139,8 @@ const Myplan = () => {
 
                         <select
                             className="select select-bordered rounded-2xl bg-[#1a1d23] text-white border-gray-700"
-                            defaultValue="duration"
+                            value={sortBy}
+                            onChange={(event) => setSortBy(event.target.value as typeof sortBy)}
                         >
                             <option value="duration">
                                 Duration
@@ -147,9 +161,32 @@ const Myplan = () => {
                 <div className="grid gap-4">
                     {currentData.length > 0 ? (
                         <ul className="space-y-4">
-                            {currentData.map((workout: IWorkout) => (
+                            {sortedData.map((workout: IWorkout) => (
                                 <li key={workout.id}>
-                                    <WorkoutListCard workout={workout} />
+                                    {activeTab === "plan" ? (
+                                        <WorkoutListCard
+                                            workout={workout}
+                                            onMarkAsDone={() => {
+                                                setMyplan((workouts) =>
+                                                    workouts.filter((item) => item.id !== workout.id)
+                                                );
+                                            }}
+                                            onRemove={() => {
+                                                setMyplan((workouts) =>
+                                                    workouts.filter((item) => item.id !== workout.id)
+                                                );
+                                            }}
+                                        />
+                                    ) : (
+                                        <WorkoutSavedCard
+                                            workout={workout}
+                                            onRemove={() => {
+                                                setSaved((workouts) =>
+                                                    workouts.filter((item) => item.id !== workout.id)
+                                                );
+                                            }}
+                                        />
+                                    )}
                                 </li>
                             ))}
                         </ul>

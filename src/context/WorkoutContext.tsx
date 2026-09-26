@@ -20,7 +20,7 @@ const WorkoutProvider = ({ children }: { children: ReactNode }) => {
     const [myplan, setMyplan] = useState<IWorkout[]>([]);
     const [saved, setSaved] = useState<IWorkout[]>([]);
 
-    const shareData: WorkoutContextType = {
+    const shareData = {
         myplan,
         setMyplan,
         saved,
