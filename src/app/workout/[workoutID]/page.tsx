@@ -142,7 +142,7 @@ const WorkoutDetails = async ({ params }: WorkoutDetailsProps) => {
                     {/* Buttons */}
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                         <PlanButton workout={workout} />
-                        <SaveButton workout={workout}/>
+                        <SaveButton workout={workout} />
                     </div>
                 </div>
             </div>
@@ -151,3 +151,7 @@ const WorkoutDetails = async ({ params }: WorkoutDetailsProps) => {
 };
 
 export default WorkoutDetails;
+
+
+// toastify
+// <div class="go318030988" style="left: 0px; right: 0px; display: flex; position: absolute; transition: 230ms cubic-bezier(0.21, 1.02, 0.73, 1); transform: translateY(54.9333px); top: 0px; justify-content: flex-end;"><div class="go1131771667" style="background: rgb(26, 29, 35); color: rgb(232, 234, 239); border: 1px solid rgb(42, 46, 56); animation: 0.35s cubic-bezier(0.21, 1.02, 0.73, 1) 0s 1 normal forwards running go1697577655;"><div class="go1744123236"><div class="go920402962"></div><div class="go1899046132"><div class="go378373464"></div></div></div><div role="status" aria-live="polite" class="go3615723686">Already in your plan</div></div></div>

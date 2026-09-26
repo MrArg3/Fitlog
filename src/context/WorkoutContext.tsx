@@ -1,22 +1,35 @@
 "use client"
-import React, {createContext, ReactNode, useState} from 'react';
+import React, { createContext, ReactNode, useState } from 'react';
+import { IWorkout } from '@/types/workout.type';
 
-export const WorkoutContext = createContext({});
+type WorkoutContextType = {
+    myplan: IWorkout[];
+    setMyplan: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+    saved: IWorkout[];
+    setSaved: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+};
 
-const WorkoutProvider = ({children}: { children: ReactNode}) => {
-    const [myplan, setMyplan] = useState([]);
-    const [saved, setSaved] = useState([]);
+export const WorkoutContext = createContext<WorkoutContextType>({
+    myplan: [],
+    setMyplan: () => undefined,
+    saved: [],
+    setSaved: () => undefined,
+});
 
-    const shareData = {
+const WorkoutProvider = ({ children }: { children: ReactNode }) => {
+    const [myplan, setMyplan] = useState<IWorkout[]>([]);
+    const [saved, setSaved] = useState<IWorkout[]>([]);
+
+    const shareData: WorkoutContextType = {
         myplan,
         setMyplan,
         saved,
-        setSaved
+        setSaved,
     };
+
     return (
-    <WorkoutContext.Provider value={shareData}>{children}</WorkoutContext.Provider>
+        <WorkoutContext.Provider value={shareData}>{children}</WorkoutContext.Provider>
     );
-        
 };
 
 export default WorkoutProvider;

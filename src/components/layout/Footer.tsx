@@ -4,25 +4,24 @@ import Image from 'next/image';
 
 const Footer = () => {
     return (
-        <footer className="bg-[#1a1d23] border-t px-[16px]  border-gray-800/75 py-[32px]">
-            <div className=" max-w-6xl mx-auto flex justify-between items-center">
-                <div className="flex gap-2 text-sm align-center items-center">
-                    <Image src={logo} alt="Logo" width={20} height={20}  />
-                    <p className="font-oswald text-lg">FITLOG</p>
+
+        <footer className="border-t border-gray-800/75 bg-[#1a1d23] px-[16px] py-[32px]">
+            <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
+
+                {/* Logo */}
+                <div className="flex items-center gap-2 text-sm">
+                    <Image src={logo} alt="Logo" width={20} height={20} />
+                    <p className="font-oswald text-lg text-white">FITLOG</p>
                 </div>
-               
-                <div className="text-gray-400 text-sm">
+
+                {/* Copyright */}
+                <div className="text-center text-xs text-gray-400 sm:text-right sm:text-sm">
                     @ 2026 FitLog — Workout Library. Train hard, log honest.
                 </div>
-            </div>
 
-            {/* <div className="max-w-6xl mx-auto flex justify-between items-center text-gray-300 text-lg">
-                <div>
-                    logo
-                </div>
-                <div>Since 2026</div>
-            </div> */}
+            </div>
         </footer>
+
     );
 };
 

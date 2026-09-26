@@ -5,6 +5,9 @@ import Navbar from "@/components/layout/trush/Navbar";
 import Footer from "@/components/layout/Footer";
 import Navmenu from "@/components/layout/Navmenu";
 import WorkoutProvider from "@/context/WorkoutContext";
+import { ToastContainer, Flip, Slide, Bounce, Zoom } from "react-toastify";
+import { Toaster } from "react-hot-toast";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,8 +48,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
           <Footer />
+          <Toaster
+            position="top-right"
+            reverseOrder={false}
+          />
         </WorkoutProvider>
       </body>
+
     </html>
   );
 }

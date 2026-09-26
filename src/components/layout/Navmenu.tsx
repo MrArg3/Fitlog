@@ -3,13 +3,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import logo from "@/app/assets/logo.png";
 import hamburger from "@/app/assets/icon/hamburger.svg";
 import "./Navmenu.css";
+import { useContext } from "react";
+import { WorkoutContext } from "@/context/WorkoutContext";
 
 const Navmenu = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { myplan, saved } = useContext(WorkoutContext);
 
     return (
         <nav className="relative sticky top-0 z-50 border-b border-gray-800/75 bg-[#0f1115]/80 backdrop-blur-md">
@@ -92,7 +94,7 @@ const Navmenu = () => {
                         >
                             Plan{" "}
                             <span className="rounded-full bg-[#b2da00] px-[10px] py-[2px] text-black">
-                                0
+                                {myplan.length}
                             </span>
                         </Link>
 
@@ -103,7 +105,7 @@ const Navmenu = () => {
                         >
                             Saved{" "}
                             <span className="rounded-full border border-white px-[10px] py-[1px] text-white">
-                                0
+                                {saved.length}
                             </span>
                         </Link>
 
