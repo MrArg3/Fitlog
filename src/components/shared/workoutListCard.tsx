@@ -9,7 +9,7 @@ type WorkoutListCardProps = {
 
 const WorkoutListCard = ({ workout }: WorkoutListCardProps) => {
     return (
-        <div key={workout.id} className="bg-[#1a1d23] rounded-2xl border border-gray-700/30 p-5">
+        <div className="bg-[#1a1d23] rounded-2xl border border-gray-700/30 p-5">
             {/* <div className="grid grid-cols-3 items-center"> */}
             <div className="flex flex-col gap-4 rounded-2xl border border-base-300 bg-base-200 p-4 sm:flex-row sm:items-center">
 

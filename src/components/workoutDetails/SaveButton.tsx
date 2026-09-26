@@ -14,11 +14,17 @@ const SaveButton = ({ workout }: { workout: IWorkout }) => {
 
     const { saved, setSaved } = useContext(WorkoutContext);
 
-    console.log("saved data=> ", saved);
-
     const handleAddToSaved = () => {
-        console.log("saved button=> ", workout);
-
+        const existingWorkout = saved.find((workoutData: IWorkout) => String(workoutData.id) === String(workout.id))
+        if (existingWorkout) {
+            toast.error("Already in your saved list", {
+                style: {
+                    background: '#1a1d23',
+                    color: '#fff',
+                },
+            })
+            return;
+        }
         setSaved([...saved, workout])
         toast.success("Saved for later", {
             style: {
@@ -30,7 +36,9 @@ const SaveButton = ({ workout }: { workout: IWorkout }) => {
 
     return (
         <div>
-            <button className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white px-4 py-2 transition-colors duration-300 hover:bg-[#17191f] sm:w-auto" onClick={() => handleAddToSaved()}>
+            <button className="flex w-full items-center justify-center gap-2 rounded-2xl 
+            border border-white px-4 py-2 transition-colors duration-300 hover:bg-[#17191f] sm:w-auto"
+                onClick={() => handleAddToSaved()}>
                 <span className="flex items-center" >
                     {icon.save}
                 </span>

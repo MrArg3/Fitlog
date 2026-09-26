@@ -3,7 +3,6 @@ import Image from 'next/image';
 import PlanButton from '@/components/workoutDetails/PlanButton';
 import SaveButton from '@/components/workoutDetails/SaveButton';
 
-
 interface WorkoutDetailsProps {
     params: {
         workoutID: string;
@@ -15,9 +14,6 @@ const workoutApi = async () => {
     const data = await res.json();
     return data;
 };
-
-
-
 
 const WorkoutDetails = async ({ params }: WorkoutDetailsProps) => {
     const { workoutID } = await params;

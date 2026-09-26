@@ -1,6 +1,7 @@
 import React from 'react';
 import WorkoutCard from './WorkoutCard';
 import Link from 'next/link';
+import { IWorkout } from '@/types/workout.type';
 
 const workoutApi = async () => {
     const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
@@ -22,7 +23,7 @@ const WorkoutLibrary = async () => {
             </div>
 
             <div className="grid cursor-pointer grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {workouts.map((workout: any) => (
+                {workouts.map((workout: IWorkout) => (
                     <Link href={`/workout/${workout.id}`} key={workout.id}>
                         <WorkoutCard workout={workout} />
                     </Link>
