@@ -146,9 +146,13 @@ const Myplan = () => {
                 {/* WORKOUT LIST */}
                 <div className="grid gap-4">
                     {currentData.length > 0 ? (
-                        currentData.map((workout: IWorkout) => (
-                            <WorkoutListCard key={workout.id} workout={workout} />
-                        ))
+                        <ul className="space-y-4">
+                            {currentData.map((workout: IWorkout) => (
+                                <li key={workout.id}>
+                                    <WorkoutListCard workout={workout} />
+                                </li>
+                            ))}
+                        </ul>
                     ) : (<WorkoutBlankCard/>)}
                 </div>
             </div>

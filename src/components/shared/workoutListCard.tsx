@@ -1,55 +1,148 @@
-import React from 'react';
-import { IWorkout } from '@/types/workout.type';
-import Image from 'next/image';
-import Link from 'next/dist/client/link';
+import React from "react";
+import { IWorkout } from "@/types/workout.type";
+import Image from "next/image";
+import Link from "next/link";
 
 type WorkoutListCardProps = {
     workout: IWorkout;
 };
 
+const icon = {
+    time: (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4 text-[#C2F800]"
+            aria-hidden="true"
+        >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+        </svg>
+    ),
+
+    kcal: (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4 text-[#C2F800]"
+            aria-hidden="true"
+        >
+            <path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" />
+        </svg>
+    ),
+
+    rating: (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4 text-[#C2F800]"
+            aria-hidden="true"
+        >
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26" />
+        </svg>
+    ),
+};
+
+
 const WorkoutListCard = ({ workout }: WorkoutListCardProps) => {
     return (
-        <div className="bg-[#1a1d23] rounded-2xl border border-gray-700/30 p-5">
-            {/* <div className="grid grid-cols-3 items-center"> */}
-            <div className="flex flex-col gap-4 rounded-2xl border border-base-300 bg-base-200 p-4 sm:flex-row sm:items-center">
+        <div className="flex flex-col gap-4 rounded-2xl border border-[#2b2e36] bg-[#1a1d23] p-3 sm:flex-row sm:items-center sm:p-4">
 
-                <div>
-                    <Image src={workout.image} alt={workout.name} width={200} height={200}
-                        className="object-cover rounded-2xl" />
-                </div>
+            {/* Workout Image */}
+            <div className="shrink-0">
+                <Image
+                    src={workout.image}
+                    alt={workout.name}
+                    width={120}
+                    height={80}
+                    className="h-20 w-30 rounded-2xl object-cover"
+                />
+            </div>
 
-                <div>
-                    <h2 className="text-white text-xl font-semibold">{workout.name}</h2>
-                    <p>{workout.equipment}</p>
+            {/* Workout Information */}
+            <div className="min-w-0 flex-1">
+                <h2 className="text-base font-bold uppercase tracking-wide text-white sm:text-lg">
+                    {workout.name}
+                </h2>
 
-                    <div>
-                        <p> Duration: {workout.duration || 0} min </p>
-                        <p> Calories: {workout.calories ?? workout.caloriesBurned ?? 0}</p>
-                        <p> Rating: {workout.rating || 0}   </p>
-                    </div>
-                </div>
+                <p className="mt-0.5 text-xs text-gray-400 sm:text-sm">
+                    {workout.equipment}
+                </p>
 
-                <div className="flex flex-wrap gap-4 mt-4 text-sm text-gray-400">
-                    <Link href={`/workout/${workout.id}`} className="btn btn-sm btn-outline btn-accent">
-                        View Details
-                    </Link>
-                    <button className="btn btn-sm btn-outline btn-accent">
-                        Mark as Done
-                    </button>
-                    <button className="btn btn-sm btn-outline btn-accent">
-                        x
-                        </button>
+                {/* Workout Stats */}
+                <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-300 sm:text-sm">
+
+                    <span className="flex items-center gap-1">
+                        <span className="text-[#c2f800]">{icon.time}</span>
+                        {workout.duration || 0} min
+                    </span>
+
+                    <span className="flex items-center gap-1">
+                        <span className="text-[#c2f800]">{icon.kcal}</span>
+                        {workout.calories ?? workout.caloriesBurned ?? 0} kcal
+                    </span>
+
+                    <span className="flex items-center gap-1">
+                        <span className="text-[#c2f800]">{icon.rating}</span>
+                        {workout.rating || 0}
+                    </span>
+
                 </div>
             </div>
 
+            {/* Buttons */}
+            <div className="flex shrink-0 items-center gap-2 sm:ml-auto">
+
+                {/* View Details */}
+                <Link
+                    href={`/workout/${workout.id}`}
+                    className="rounded-full border border-gray-400 px-3 py-1.5 text-[10px] font-medium text-white transition hover:border-white hover:bg-white hover:text-black sm:px-4 sm:py-2"
+                >
+                    View Details
+                </Link>
+
+                {/* Mark as Done */}
+                <button
+                    type="button"
+                    className="flex items-center gap-1.5 rounded-full bg-[#c2f800] px-3 py-1.5 text-[10px] font-semibold text-black transition hover:bg-[#d4ff33]"
+                >
+                    <span>✓</span>
+                    Mark as Done
+                </button>
+
+                {/* Remove */}
+                <button
+                    type="button"
+                    aria-label="Remove workout"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-lg text-gray-400 transition hover:bg-white/10 hover:text-white"
+                >
+                    ×
+                </button>
+
+            </div>
         </div>
     );
 };
 
 export default WorkoutListCard;
-
-
-
-{/* {workout.category && (
-    <p className="text-gray-400 text-sm mt-2"> {workout.category} </p>
-)} */}
