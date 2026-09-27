@@ -64,18 +64,24 @@ const WorkoutCard = ({ workout }: { workout: IWorkout }) => {
         <section>
           <div className="font-inter overflow-hidden border-1 border-transparent hover:border-[#C2F800]/60 transition-all duration-300 rounded-2xl">
                 <div className="w-full h-[200px] rounded-t-xl overflow-hidden">
-                    <Image
-                        src={workout.image}
-                        alt={workout.name}
-                        width={250}
-                        height={200}
-                        className="w-full h-full object-cover"
-                    />
+                    {workout.image ? (
+                        <Image
+                            src={workout.image}
+                            alt={workout.name}
+                            width={250}
+                            height={200}
+                            className="w-full h-full object-cover"
+                        />
+                    ) : (
+                        <div className="flex h-full items-center justify-center bg-[#25282e] text-sm text-gray-400">
+                            {workout.name}
+                        </div>
+                    )}
                 </div>
 
                 <div className="bg-[#1a1d23] p-[20px] rounded-b-2xl flex flex-col gap-[10px] ">
                     <div>
-                        {workout.muscleGroups.map((muscleGroup: string) => (
+                        {workout.muscleGroups?.map((muscleGroup: string) => (
                             <span
                                 key={muscleGroup}
                                 className="bg-[#C2F800] text-black text-[12px] mr-2 px-2 rounded-[15px] inline-block"

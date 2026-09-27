@@ -65,7 +65,7 @@ const icon = {
         </svg>
     ),
     cross: (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        strokeWidth="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-x h-4 w-4" aria-hidden="true">
+        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x h-4 w-4" aria-hidden="true">
         <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>)
 };
 
@@ -76,13 +76,19 @@ const WorkoutListCard = ({ workout, onMarkAsDone, onRemove }: WorkoutListCardPro
 
             {/* Workout Image */}
             <div className="shrink-0">
-                <Image
-                    src={workout.image}
-                    alt={workout.name}
-                    width={120}
-                    height={80}
-                    className="h-20 w-30 rounded-2xl object-cover"
-                />
+                {workout.image ? (
+                    <Image
+                        src={workout.image}
+                        alt={workout.name}
+                        width={120}
+                        height={80}
+                        className="h-20 w-30 rounded-2xl object-cover"
+                    />
+                ) : (
+                    <div className="flex h-20 w-30 items-center justify-center rounded-2xl bg-[#25282e] text-xs text-gray-400">
+                        {workout.name}
+                    </div>
+                )}
             </div>
 
             {/* Workout Information */}

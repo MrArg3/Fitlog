@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Oswald, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/trush/Navbar";
 import Footer from "@/components/layout/Footer";
 import Navmenu from "@/components/layout/Navmenu";
 import WorkoutProvider from "@/context/WorkoutContext";
-import { ToastContainer, Flip, Slide, Bounce, Zoom } from "react-toastify";
 import { Toaster } from "react-hot-toast";
 
 
@@ -41,7 +39,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col">
-        {/* <Navbar/> */}
         <WorkoutProvider>
           <Navmenu />
           <main className="flex-1">
