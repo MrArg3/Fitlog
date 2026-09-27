@@ -1,9 +1,13 @@
 # FitLog 🏋️ 
 
-### Project Name
+## Project Name
 **FitLog — Workout Platform**
 
-## Short description
+### Website URL
+
+URL: https://fitlog-workout-platform.vercel.app/
+
+### Short description
 
 **FitLog** is a modern, responsive website and workout-planning web application built with **Next.js** and **Tailwind CSS**.Create a daily workout plan, save workouts for later, and track their workout progress.
 

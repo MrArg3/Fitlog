@@ -1,5 +1,4 @@
 "use client";
-
 import { WorkoutContext } from "@/context/WorkoutContext";
 import { useContext, useState } from "react";
 import WorkoutListCard from "@/components/shared/workoutListCard";
@@ -7,6 +6,7 @@ import WorkoutSavedCard from "@/components/shared/workoutSavedCard";
 import { IWorkout } from "@/types/workout.type";
 import WorkoutBlankCard from "@/components/shared/workoutBlankCard";
 import { toast } from "react-hot-toast";
+
 
 const Myplan = () => {
     const { myplan, setMyplan, saved, setSaved } = useContext(WorkoutContext);
