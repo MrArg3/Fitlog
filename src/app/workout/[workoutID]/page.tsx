@@ -1,6 +1,7 @@
 
 import { IWorkout } from '@/types/workout.type';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import PlanButton from '@/components/workoutDetails/PlanButton';
 import SaveButton from '@/components/workoutDetails/SaveButton';
 
@@ -11,8 +12,8 @@ interface WorkoutDetailsProps {
 }
 
 const workoutApi = async () => {
-    // const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
-    const res = await fetch('https://api.api-store.workers.dev/api/fitlog',{cache: 'force-cache'});
+    const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
+    // const res =  await fetch('https://api.api-store.workers.dev/api/fitlog',{cache: 'force-cache'});
     
     const data = await res.json();
     return data;
@@ -22,6 +23,7 @@ const WorkoutDetails = async ({ params }: WorkoutDetailsProps) => {
     const { workoutID } = await params;
     const workoutData = await workoutApi();
     const workout = workoutData.find((workout: IWorkout) => String(workout.id) === String(workoutID));
+    if (!workout) notFound();
 
     const workoutDetails = [
         {

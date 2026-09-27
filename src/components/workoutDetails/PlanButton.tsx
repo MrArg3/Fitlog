@@ -26,6 +26,16 @@ const PlanButton = ({ workout }: { workout: IWorkout }) => {
             return;
         }
 
+        if (myplan.length >= 5) {
+            toast.error("Today's plan is full — finish these first!", {
+                style: {
+                    background: '#1a1d23',
+                    color: '#fff',
+                },
+            })
+            return;
+        }
+
         setMyplan([...myplan, workout]);
         toast.success("Added to today's plan", {
             style: {

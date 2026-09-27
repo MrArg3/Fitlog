@@ -1,7 +1,8 @@
-"use client"
 import { IWorkout } from "@/types/workout.type";
 import Image from "next/image";
 import Link from "next/link";
+import MarkAsDoneButton from "./MarkAsDoneButton";
+import RemoveButton from "./RemoveButton";
 
 type WorkoutListCardProps = {
     workout: IWorkout;
@@ -64,9 +65,7 @@ const icon = {
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26" />
         </svg>
     ),
-    cross: (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x h-4 w-4" aria-hidden="true">
-        <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>)
+
 };
 
 
@@ -134,24 +133,11 @@ const WorkoutListCard = ({ workout, onMarkAsDone, onRemove }: WorkoutListCardPro
                 </Link>
 
                 {/* Mark as Done */}
-                <button
-                    type="button"
-                    onClick={onMarkAsDone}
-                    className="flex items-center gap-1.5 rounded-full bg-[#c2f800] px-3 py-1.5 text-[10px] font-semibold text-black transition hover:bg-[#d4ff33]"
-                >
-                    <span>✓</span>
-                    Mark as Done
-                </button>
+                <MarkAsDoneButton onMarkAsDone={onMarkAsDone}/>
 
                 {/* Remove */}
-                <button
-                    type="button"
-                    aria-label="Remove workout"
-                    onClick={onRemove}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-lg text-gray-400 transition hover:bg-white/10 hover:text-white"
-                >
-                    {icon.cross}
-                </button>
+                <RemoveButton onRemove={onRemove} />
+                
 
             </div>
         </div>

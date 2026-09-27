@@ -6,6 +6,7 @@ import WorkoutListCard from "@/components/shared/workoutListCard";
 import WorkoutSavedCard from "@/components/shared/workoutSavedCard";
 import { IWorkout } from "@/types/workout.type";
 import WorkoutBlankCard from "@/components/shared/workoutBlankCard";
+import { toast } from "react-hot-toast";
 
 const Myplan = () => {
     const { myplan, setMyplan, saved, setSaved } = useContext(WorkoutContext);
@@ -105,8 +106,8 @@ const Myplan = () => {
                             aria-selected={activeTab === "plan"}
                             onClick={() => setActiveTab("plan")}
                             className={`tab rounded-xl border-0 transition duration-300 ${activeTab === "plan"
-                                    ? "bg-[#0f1115] text-[#C2F800]"
-                                    : "text-gray-400 hover:text-white"
+                                ? "bg-[#0f1115] text-[#C2F800]"
+                                : "text-gray-400 hover:text-white"
                                 }`}
                         >
                             Today&apos;s Plan
@@ -120,8 +121,8 @@ const Myplan = () => {
                             aria-selected={activeTab === "saved"}
                             onClick={() => setActiveTab("saved")}
                             className={`tab rounded-xl border-0 transition duration-300 ${activeTab === "saved"
-                                    ? "bg-[#0f1115] text-[#C2F800]"
-                                    : "text-gray-400 hover:text-white"
+                                ? "bg-[#0f1115] text-[#C2F800]"
+                                : "text-gray-400 hover:text-white"
                                 }`}
                         >
                             Saved
@@ -170,11 +171,23 @@ const Myplan = () => {
                                                 setMyplan((workouts) =>
                                                     workouts.filter((item) => item.id !== workout.id)
                                                 );
+                                                toast.success("Workout logged — nice work", {
+                                                    style: {
+                                                        background: '#1a1d23',
+                                                        color: '#fff',
+                                                    },
+                                                });
                                             }}
                                             onRemove={() => {
                                                 setMyplan((workouts) =>
                                                     workouts.filter((item) => item.id !== workout.id)
                                                 );
+                                                toast.success("Removed from today's plan", {
+                                                    style: {
+                                                        background: '#1a1d23',
+                                                        color: '#fff',
+                                                    },
+                                                });
                                             }}
                                         />
                                     ) : (
@@ -184,13 +197,19 @@ const Myplan = () => {
                                                 setSaved((workouts) =>
                                                     workouts.filter((item) => item.id !== workout.id)
                                                 );
+                                                toast.success("Removed from saved", {
+                                                    style: {
+                                                        background: '#1a1d23',
+                                                        color: '#fff',
+                                                    },
+                                                })
                                             }}
                                         />
                                     )}
                                 </li>
                             ))}
                         </ul>
-                    ) : (<WorkoutBlankCard/>)}
+                    ) : (<WorkoutBlankCard />)}
                 </div>
             </div>
         </section>

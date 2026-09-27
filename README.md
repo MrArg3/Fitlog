@@ -1,10 +1,11 @@
 # FitLog 🏋️ 
 
-### Project
+### Project Name
 **FitLog — Workout Platform**
-**FitLog** is a modern, responsive website and workout-planning web application built with **Next.js** and **Tailwind CSS**.Create a daily workout plan, save workouts for later, and track their workout progress.
 
-#### ✨ Key Features
+## Short description
+
+**FitLog** is a modern, responsive website and workout-planning web application built with **Next.js** and **Tailwind CSS**.Create a daily workout plan, save workouts for later, and track their workout progress.
 
 ## 🛠️ Technologies Used   
 
@@ -14,6 +15,8 @@
 - [x] **Tailwind CSS**       
 - [x] **React Toastify**      
 - [x] **Vercel**     
+
+#### ✨ Key Features
 
 ## 🎯 Project Highlights
 
@@ -39,7 +42,6 @@
 
 Each workout has a dedicated detail page.
 * In workout details page have **Add to Today's Plan**, **Save for Later** button and **Toast notifications**
-* 
 
 ### 📝 My Plan
 
