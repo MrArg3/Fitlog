@@ -1,4 +1,3 @@
-
 import { Suspense } from "react";
 import Banner from "@/components/home/Banner";
 import WorkeroutLibrary from "@/components/home/WorkoutLibrary";
@@ -11,7 +10,6 @@ function WorkoutLoading() {
       <p className="mb-6 font-inter text-gray-300/75">
         Twelve lifts covering every major muscle group.
       </p>
-
 
       <div
         className="flex min-h-48 flex-col items-center justify-center gap-4"

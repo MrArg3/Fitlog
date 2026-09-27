@@ -7,7 +7,6 @@ import { IWorkout } from "@/types/workout.type";
 import WorkoutBlankCard from "@/components/shared/workoutBlankCard";
 import { toast } from "react-hot-toast";
 
-
 const Myplan = () => {
     const { myplan, setMyplan, saved, setSaved } = useContext(WorkoutContext);
     const [activeTab, setActiveTab] = useState("plan");

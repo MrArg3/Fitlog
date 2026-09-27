@@ -3,9 +3,9 @@
 ## Project Name
 **FitLog — Workout Platform**
 
-### Website URL
+### Live Website 
 
-URL: https://fitlog-workout-platform.vercel.app/
+Live Website Link: https://fitlog-workout-platform.vercel.app
 
 ### Short description
 
