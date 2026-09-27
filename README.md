@@ -5,7 +5,9 @@
 
 ### Live Website 
 
-Live Website Link: https://fitlog-workout-platform.vercel.app
+Live Website Link: 
+Link 1: https://fitlog-2ava.vercel.app 
+LinK 2: https://fitlog-workout-platform.vercel.app
 
 ### Short description
 
